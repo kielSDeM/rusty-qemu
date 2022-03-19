@@ -1,13 +1,13 @@
 #!/bin/bash
 #written by Kiel DeMarco
 
-FILE1=/home/zero/qemu-scripts/rust-qemu/src/kali.img
+FILE1=/home/zero/rusty-qemu/src/kali.img
 FILE2=kali-linux-2022.1-installer-amd64.iso
 #creates kali virtual disk if it does not exist
 if [ ! -f "$FILE1" ]
 then
     echo "Going to create a kali virt-disk & download kali iso"
-    qemu-img create -f raw kali.img 60G 
+    qemu-img create -f raw kali.img 40G 
 else
     echo "files exist"
 fi
