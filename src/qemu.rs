@@ -20,7 +20,8 @@ impl QemuVirt for StartQemu {
                 1: Kali \n
                 2: Arch \n
                 3: LXLE \n
-                4: Exit"
+                4: Lubuntu \n
+                5: Exit"
             );
             qemu_virt.qemu.clear();
             std::io::stdin()
@@ -29,16 +30,14 @@ impl QemuVirt for StartQemu {
             let qemu = qemu_virt.qemu.trim();
             match qemu {
                 "1" => {
-                    run_cmd!(
-                        gnome - terminal - e / home / zero / rusty - qemu / src / kali - qemu.bash
-                    )
+                    run_cmd!(gnome-terminal -e bash_qemu/kali.bash)
                     .unwrap();
                     eprintln!("Starting Kali Linux");
                     continue;
                 }
                 "2" => {
                     run_cmd!(
-                        gnome - terminal - e / home / zero / rusty - qemu / src / arch - qemu.bash
+                        gnome-terminal -e bash_qemu/arch-qemu.bash
                     )
                     .unwrap();
                     eprintln!("Starting Arch Linux");
@@ -46,13 +45,16 @@ impl QemuVirt for StartQemu {
                 }
                 "3" => {
                     run_cmd!(
-                        gnome - terminal - e / home / zero / rusty - qemu / src / lxle - qemu.bash
+                        gnome-terminal -e bash_qemu/lxle-qemu.bash
                     )
                     .unwrap();
                     eprintln!("Starting LXLE.");
                     continue;
                 }
                 "4" => {
+                    run_cmd!(gnome-terminal -e bash_qemu/lubuntu.bash).unwrap();
+                }
+                "5" => {
                     println!("Program will now exit");
                     break;
                 }
