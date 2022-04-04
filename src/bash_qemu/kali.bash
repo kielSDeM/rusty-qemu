@@ -28,14 +28,16 @@ then
     -smp 2 -enable-kvm 
     echo "vm creation successfully completed"
 else
-    echo "starting kali"
-    qemu-system-x86_64 -drive file=src/qemu_img/kali.qcow2,format=raw  -boot d \
-    -m 8192M -cpu host -device intel-hda -device hda-duplex \
-    -smp 4 -spice port=3000,disable-ticketing=on \
+    echo "starting kali in remote-viewer"
+    qemu-system-x86_64 -drive file=qemu_img/kali.qcow2,format=raw  -boot d \
+    -m 6145M -cpu host -device intel-hda -device hda-duplex \
+    -smp 2 -spice port=3000,disable-ticketing=on \
     -vga qxl -enable-kvm -device intel-hda -device hda-duplex \
     -device virtio-serial-pci,id=virtio-serial0,max_ports=16,bus=pci.0,addr=0x5 \
     -chardev spicevmc,name=vdagent,id=vdagent \
     -device virtserialport,nr=1,bus=virtio-serial0.0,chardev=vdagent,name=com.redhat.spice.0 \
-    -usb -device usb-host,hostbus=1,hostport=2 \
-    -device virtio-net,netdev=vmnic -netdev user,id=vmnic
+    -device virtio-net,netdev=vmnic -netdev user,id=vmnic \
+    -netdev user,id=mynet0,net=192.168.76.0/24,dhcpstart=192.168.76.1 \
+    -device e1000,netdev=mynet0,mac=30:51:33:91:44:22 
 fi 
+remote-viewer spice://127.0.0.1:3000
