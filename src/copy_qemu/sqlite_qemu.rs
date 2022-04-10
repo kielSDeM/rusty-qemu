@@ -19,8 +19,8 @@ impl Store for Database {
         connection.execute(
             "
             INSERT INTO vm_copies VALUES ('{}');
-        ", vm_copy,
-    )
-    .unwrap();
-}
+            ", vm_copy,
+        )
+        .unwrap();
+    }
 }

@@ -7,5 +7,4 @@ echo "please enter kali lubu or lxle"
     -netdev user,id=mynet0,net=192.168.76.0/24,dhcpstart=192.168.76.9 \
     -device e1000,netdev=mynet0,mac=10:5c:32:31:d2:dd  \
     -vga qxl -enable-kvm 
-    echo "starting lubuntu"
 fi 
