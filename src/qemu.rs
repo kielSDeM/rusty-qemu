@@ -38,7 +38,7 @@ impl QemuVirt for StartQemu {
                 }
                 "2" => {
                     run_cmd!(
-                        gnome-terminal -e bash_qemu/arch-qemu.bash
+                        "gnome-terminal -e bash_qemu/arch-qemu.bash"
                     )
                     .unwrap();
                     eprintln!("Starting Arch Linux");

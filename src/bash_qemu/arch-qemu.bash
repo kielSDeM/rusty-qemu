@@ -25,12 +25,13 @@ fi
 #starts arch img with iso or without iso if installed.
 if qemu-img info arch.img | grep -i "disk size: 4 KiB"
 then
+#This condition is for when the os is not installed.
     qemu-system-x86_64 -drive file=qemu_img/arch.img,format=raw -boot d \
     -cdrom src/qemu_iso/archlinux-2022.03.01-x86_64.iso  -m 4096M -cpu host \
     -smp 2 -enable-kvm 
     echo "starting arch booter"
 else
-
+#Here you can edit this condition for once the vm is installed on the image.
     qemu-system-x86_64 -drive file=qemu_img/arch.img,format=raw -boot d \
     -m 4096M -cpu host -device intel-hda -device hda-duplex \
     -smp 4 -spice port=3001,disable-ticketing=on \

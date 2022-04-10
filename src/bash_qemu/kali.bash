@@ -40,4 +40,3 @@ else
     -netdev user,id=mynet0,net=192.168.76.0/24,dhcpstart=192.168.76.1 \
     -device e1000,netdev=mynet0,mac=30:51:33:91:44:22 
 fi 
-remote-viewer spice://127.0.0.1:3000
