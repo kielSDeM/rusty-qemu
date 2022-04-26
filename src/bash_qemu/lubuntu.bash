@@ -28,6 +28,10 @@ then
     echo "vm creation successfully completed"
 else
     qemu-system-x86_64 -drive file=qemu_img/lubu.qcow2,format=raw -boot d \
+    -m 6192M -cpu host -device intel-hda -device hda-duplex \
+    -smp 4 -spice port=3002,disable-ticketing=on \
+    -netdev user,id=mynet0,net=192.168.76.0/24,dhcpstart=192.168.76.9 \
+    -device e1000,netdev=mynet0,mac=10:5c:32:31:d2:dd  \
     -m 2048M -cpu host -device intel-hda -device hda-duplex \
     -smp 2 -spice port=3002,disable-ticketing=on \
     -netdev user,id=mynet0,net=192.168.76.0/24,dhcpstart=192.168.76.9 \

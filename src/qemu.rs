@@ -32,12 +32,13 @@ impl QemuVirt for StartQemu {
                 "1" => {
                     run_cmd!(gnome-terminal -e bash_qemu/kali.bash)
                     .unwrap();
+                    run_cmd!(gnome-terminal -e "remote-viewer spice://127.0.0.1:3000").unwrap();
                     eprintln!("Starting Kali Linux");
                     continue;
                 }
                 "2" => {
                     run_cmd!(
-                        gnome-terminal -e bash_qemu/arch-qemu.bash
+                        "gnome-terminal -e bash_qemu/arch-qemu.bash"
                     )
                     .unwrap();
                     eprintln!("Starting Arch Linux");
@@ -53,6 +54,7 @@ impl QemuVirt for StartQemu {
                 }
                 "4" => {
                     run_cmd!(gnome-terminal -e bash_qemu/lubuntu.bash).unwrap();
+                    run_cmd!(gnome-terminal -e "remote-viewer spice://127.0.0.1:3002").unwrap();
                 }
                 "5" => {
                     println!("Program will now exit");
